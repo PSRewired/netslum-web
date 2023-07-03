@@ -1,0 +1,21 @@
+@import "../../scss/_variables.scss";
+
+footer {
+  background: $primary-gradient-reverse;
+  min-height: 64px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer .container-fluid {
+  margin: 18px 0px;
+}
+
+.lead {
+  font-size: 1.1rem;
+}
+
+.text-muted {
+  font-size: 0.8rem;
+}
