@@ -1,3 +1,5 @@
+@import './bootstrap.scss';
+
 html {
   position: relative;
   min-height: 100%;
@@ -9,4 +11,12 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.underline-primary {
+  border-bottom: 1px solid $primary;
+}
+
+.underline-secondary {
+  border-bottom: 1px solid $secondary;
 }
