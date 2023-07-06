@@ -13,3 +13,5 @@ export const getAllPlayers = (page = 1, pageSize = 10, characterName = undefined
         characterName
     }
 });
+
+export const getCharacter = (characterId) => httpClient.get(`/api/players/${characterId}`);

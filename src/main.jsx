@@ -10,6 +10,7 @@ import routes from './routes.jsx';
 
 import './scss/bootstrap.scss';
 import './scss/main.scss'
+import 'hack-font/build/web/hack.css';
 import {initReactI18next} from "react-i18next";
 
 

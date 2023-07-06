@@ -1,0 +1,54 @@
+@import '../../scss/bootstrap';
+
+.stats-container {
+  position: relative;
+  color: $light;
+  overflow-wrap: normal;
+}
+
+.avatar {
+  position: absolute;
+  left: 5%;
+  top: 9%;
+  height: 92%;
+  width: auto;
+}
+
+.stats-hud {
+  position: relative;
+  height: 100%;
+  width: auto;
+}
+
+.character-name {
+  position: absolute;
+  top: 6%;
+  left: 24%;
+  font-size: 9pt;
+}
+
+.hack-font {
+  font-family: Hack, monospace;
+}
+
+.hp-amount  {
+  position: absolute;
+  width: 17%;
+  top: 45%;
+  left: 41%;
+  font-size: 8pt;
+  text-align: center;
+  color: $yellow;
+  font-weight: bold;
+}
+
+.sp-amount  {
+  position: absolute;
+  width: 12%;
+  text-align: center;
+  top: 78%;
+  left: 43%;
+  font-size: 8pt;
+  color: $yellow;
+  font-weight: bold;
+}

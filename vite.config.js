@@ -6,7 +6,7 @@ import * as path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  publicDir: 'build',
+  publicDir: 'public',
   css: {
     preprocessorOptions: {
       scss: {
