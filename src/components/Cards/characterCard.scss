@@ -1,5 +1,9 @@
-@import '../../scss/bootstrap';
+@import '../../app/styles/bootstrap.scss';
 
+.character-container {
+  width: 370px;
+  margin: 0;
+}
 .stats-container {
   position: relative;
   color: $light;
@@ -8,7 +12,7 @@
 
 .avatar {
   position: absolute;
-  left: 5%;
+  left: 8%;
   top: 9%;
   height: 92%;
   width: auto;
@@ -23,7 +27,7 @@
 .character-name {
   position: absolute;
   top: 6%;
-  left: 24%;
+  left: 38%;
   font-size: 9pt;
 }
 
@@ -31,24 +35,33 @@
   font-family: Hack, monospace;
 }
 
-.hp-amount  {
+.hp-amount {
   position: absolute;
-  width: 17%;
-  top: 45%;
-  left: 41%;
-  font-size: 8pt;
+  width: 88px;
+  top: 43%;
+  left: 50%;
+  font-size: 9pt;
   text-align: center;
   color: $yellow;
   font-weight: bold;
 }
 
-.sp-amount  {
+.sp-amount {
   position: absolute;
-  width: 12%;
+  width: 66px;
   text-align: center;
   top: 78%;
-  left: 43%;
+  left: 56%;
   font-size: 8pt;
   color: $yellow;
   font-weight: bold;
+}
+
+.char-stats-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  align-content: center;
+  height: 100%;
 }

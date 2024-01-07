@@ -1,11 +1,11 @@
-@import "../../scss/_variables.scss";
+@import '../../app/styles/_variables.scss';
 
 footer {
   background: $primary-gradient-reverse;
-  min-height: 64px;
-  position: absolute;
-  bottom: 0;
+  min-height: 78px;
   width: 100%;
+  padding: 16px;
+  margin-top: 32px;
 }
 
 footer .container-fluid {

@@ -1,26 +1,35 @@
+'use client';
+
 import './titlebar.scss';
-import {Container, Nav, Navbar} from "react-bootstrap";
-import navbarLogo from '../../assets/images/logo.svg';
-import {Link} from "../Router/Link.jsx";
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from '../Router/Link.jsx';
+import Image from 'next/image';
 
 const Titlebar = () => (
-    <Navbar>
-        <Container>
-            <Navbar.Brand href="/">
-                <img alt="logo" src={navbarLogo} width="50" height="50"/>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-            <Navbar.Collapse id="responsibe-navbar-nav">
-                <Nav>
-                    <Link to="downloads">Downloads</Link>
-                    <Link to="status">Status</Link>
-                    <Link to="akashic-records">Akashic Records</Link>
-                    <Link to="bbs">BBS</Link>
-                    <Link to="discord">Discord</Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Container>
-    </Navbar>
-)
+  <Navbar>
+    <Container>
+      <Navbar.Brand href="/" style={{ display: 'flex' }}>
+        <Image
+          alt="logo"
+          src="/images/logo.svg"
+          width="50"
+          height="50"
+          className="d-inline-block align-top"
+        />
+        <span>Netslum</span>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav>
+          <Link href="/downloads">Downloads</Link>
+          <Link href="/status">Status</Link>
+          <Link href="/akashic-records">Akashic Records</Link>
+          <Link href="https://bbs.dothackers.org/">BBS</Link>
+          <Link href="https://discord.gg/AMqgeFVzBw">Discord</Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
+);
 
 export default Titlebar;

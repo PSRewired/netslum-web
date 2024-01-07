@@ -1,0 +1,8 @@
+{
+    "arrowParens": "always",
+    "singleQuote": true,
+    "semi": true,
+    "quoteProps": "consistent",
+    "singleAttributePerLine": false,
+    "htmlWhitespaceSensitivity": "ignore"
+}

@@ -1,5 +1,27 @@
-@import "../../scss/_variables.scss";
+@import '../../app/styles/main.scss';
+@import '../../app/styles/_variables.scss';
 
 .navbar {
   background: $primary-gradient;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  margin-right: 8px;
+}
+
+#responsive-navbar-nav {
+  margin-top: 4px;
+}
+
+.nav-link {
+  color: $light;
+}
+
+.navbar-collapse {
+  margin-top: -5px;
 }
