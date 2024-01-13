@@ -8,8 +8,9 @@ import Image from 'next/image';
 const Titlebar = () => (
   <Navbar>
     <Container>
-      <Navbar.Brand href="/" style={{ display: 'flex' }}>
+      <Navbar.Brand href="/" style={{ display: 'flex' }} as={Link}>
         <Image
+          priority
           alt="logo"
           src="/images/logo.svg"
           width="50"

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const httpClient = axios.create({
+  // eslint-disable-next-line no-undef
   baseURL: process.env.NEXT_PUBLIC_API_URI,
 });
 
@@ -27,3 +28,5 @@ export const getCharacterStatsHistory = (characterId) =>
 
 export const getAccountCharacters = (accountId) =>
   httpClient.get(`/api/players/account/${accountId}`);
+
+export const getOnlineAreaServers = () => httpClient.get(`/api/areaservers`);

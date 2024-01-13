@@ -1,5 +1,7 @@
 import jp from './jp.json';
 
-export default {
+const languages = {
   jp,
 };
+
+export default languages;
