@@ -30,3 +30,5 @@ export const getAccountCharacters = (accountId) =>
   httpClient.get(`/api/players/account/${accountId}`);
 
 export const getOnlineAreaServers = () => httpClient.get(`/api/areaservers`);
+
+export const getAllLobbies = () => httpClient.get(`/api/lobbies`);

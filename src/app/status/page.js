@@ -1,5 +1,6 @@
 import AreaServerList from '../../components/AreaServer/AreaServerList.js';
 import { Container, Row } from 'react-bootstrap';
+import LobbyPlayerList from '../../components/Lobbies/LobbyPlayerList.js';
 
 export const metadata = {
   title: 'Server Status',
@@ -8,9 +9,11 @@ export const metadata = {
 const StatusPage = () => {
   return (
     <Container>
-      <Row>
-        <h2 className="underline-primary">Online Area Servers</h2>
+      <Row className="mb-3">
         <AreaServerList />
+      </Row>
+      <Row className="row-gap-3">
+        <LobbyPlayerList />
       </Row>
     </Container>
   );

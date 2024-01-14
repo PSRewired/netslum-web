@@ -1,54 +1,61 @@
 'use client';
 
-import { Table } from 'react-bootstrap';
+import Image from 'next/image';
+import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useQuery } from '@tanstack/react-query';
 import { getOnlineAreaServers } from '../../clients/ServerApiClient.js';
 
 import './areasServerList.scss';
 import { DateTime } from 'luxon';
+import { AreaServerStatusDescription } from '../../constants/AreaServerStatus.js';
+import LoadingSpinner from '../Util/LoadingSpinner.jsx';
+
+function getStateDescription(state) {
+  return AreaServerStatusDescription[state] ?? 'Unknown';
+}
 
 const AreaServerList = () => {
-  const { data: areaServers = [] } = useQuery({
+  const { data: areaServers = [], isFetching } = useQuery({
     queryKey: ['area-server-list'],
     queryFn: async () => (await getOnlineAreaServers())?.data,
+    refetchInterval: 10000,
   });
 
   return (
-    <Table responsive striped>
-      <tbody>
-        <tr>
-          <td>Test</td>
-          <td>1</td>
-          <td>Foobar</td>
-          <td>4</td>
-          <td>
-            {DateTime.now().toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}
-          </td>
-        </tr>
-        <tr>
-          <td>Test2</td>
-          <td>1</td>
-          <td>Foobar</td>
-          <td>4</td>
-          <td>
-            {DateTime.now().toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}
-          </td>
-        </tr>
-        {areaServers.map((s, i) => (
-          <tr key={i}>
-            <td>{s.name}</td>
-            <td>{s.level}</td>
-            <td>{s.state}</td>
-            <td>{s.currentPlayerCount}</td>
-            <td>
-              {DateTime.fromISO(s.onlineSince).toLocaleString(
-                DateTime.DATETIME_MED_WITH_WEEKDAY,
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    <Container className="fragment-list position-relative d-flex">
+      <div className="position-relative header">
+        <img
+          alt="logo"
+          src="/images/hud/titlebar.png"
+          width="186"
+          height="24"
+        />
+        <p className="header-text">Servers Online</p>
+      </div>
+      {isFetching && (
+        <Row className="absolute-center">
+          <LoadingSpinner loading={true} />
+        </Row>
+      )}
+      {areaServers.map((s, i) => (
+        <Row
+          key={i}
+          className="d-flex justify-content-between align-items-center w-100"
+        >
+          <Col xs={4} lg={2} className="ellipse">
+            {s.name}
+          </Col>
+          <Col xs={3} lg={1}>{`Level ${s.level}`}</Col>
+          <Col xs={1}>{getStateDescription(s.state)}</Col>
+          <Col xs={2}>{`${s.currentPlayerCount} / 4`}</Col>
+          <Col lg="auto" className="text-end">
+            {DateTime.fromISO(s.onlineSince).toLocaleString(
+              DateTime.DATETIME_MED_WITH_WEEKDAY,
+            )}
+          </Col>
+        </Row>
+      ))}
+    </Container>
   );
 };
 
