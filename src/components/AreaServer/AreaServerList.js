@@ -1,23 +1,24 @@
 'use client';
 
-import Image from 'next/image';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useQuery } from '@tanstack/react-query';
-import { getOnlineAreaServers } from '../../clients/ServerApiClient.js';
 
 import './areasServerList.scss';
 import { DateTime } from 'luxon';
 import { AreaServerStatusDescription } from '../../constants/AreaServerStatus.js';
 import LoadingSpinner from '../Util/LoadingSpinner.jsx';
+import { useServerApi } from '../../hooks/useServerApi.js';
 
 function getStateDescription(state) {
   return AreaServerStatusDescription[state] ?? 'Unknown';
 }
 
 const AreaServerList = () => {
+
+  const serverApiClient = useServerApi();
   const { data: areaServers = [], isFetching } = useQuery({
     queryKey: ['area-server-list'],
-    queryFn: async () => (await getOnlineAreaServers())?.data,
+    queryFn: async () => (await serverApiClient.getOnlineAreaServers())?.data,
     refetchInterval: 10000,
   });
 

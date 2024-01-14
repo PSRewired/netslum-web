@@ -1,34 +1,43 @@
 import axios from 'axios';
+import { getServerHost } from '../util/HostUtils.js';
 
-const httpClient = axios.create({
-  // eslint-disable-next-line no-undef
-  baseURL: process.env.NEXT_PUBLIC_API_URI,
-});
+export const SsrServerApiClient = new ServerApiClient(getServerHost());
 
-export const getServerStats = () => httpClient.get(`/api/stats`);
+export class ServerApiClient {
+  #client;
 
-export const getAllPlayers = (
-  page = 1,
-  pageSize = 10,
-  characterName = undefined,
-) =>
-  httpClient.get(`/api/players`, {
-    params: {
-      page,
-      pageSize,
-      characterName,
-    },
-  });
+  constructor(baseURL = null) {
+    this.#client = axios.create({
+      baseURL,
+    });
+  }
 
-export const getCharacter = (characterId) =>
-  httpClient.get(`/api/players/${characterId}`);
+  getServerStats = () => this.#client.get(`/api/stats`);
 
-export const getCharacterStatsHistory = (characterId) =>
-  httpClient.get(`/api/players/${characterId}/stats`);
+  getAllPlayers = (
+    page = 1,
+    pageSize = 10,
+    characterName = undefined
+  ) =>
+    this.#client.get(`/api/players`, {
+      params: {
+        page,
+        pageSize,
+        characterName
+      }
+    });
 
-export const getAccountCharacters = (accountId) =>
-  httpClient.get(`/api/players/account/${accountId}`);
+   getCharacter = (characterId) =>
+    this.#client.get(`/api/players/${characterId}`);
 
-export const getOnlineAreaServers = () => httpClient.get(`/api/areaservers`);
+  getCharacterStatsHistory = (characterId) =>
+    this.#client.get(`/api/players/${characterId}/stats`);
 
-export const getAllLobbies = () => httpClient.get(`/api/lobbies`);
+  getAccountCharacters = (accountId) =>
+    this.#client.get(`/api/players/account/${accountId}`);
+
+  getOnlineAreaServers = () => this.#client.get(`/api/areaservers`);
+
+  getAllLobbies = () => this.#client.get(`/api/lobbies`);
+}
+

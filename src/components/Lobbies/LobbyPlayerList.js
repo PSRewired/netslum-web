@@ -2,16 +2,16 @@
 
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useQuery } from '@tanstack/react-query';
-import { getAllLobbies } from '../../clients/ServerApiClient.js';
 
 import './lobbyPlayerList.scss';
-import { DateTime } from 'luxon';
 import LoadingSpinner from '../Util/LoadingSpinner.jsx';
+import { useServerApi } from '../../hooks/useServerApi.js';
 
 const LobbyPlayerList = () => {
+  const serverApiClient = useServerApi();
   const { data: lobbies = [], isFetching } = useQuery({
     queryKey: ['lobby-player-list'],
-    queryFn: async () => (await getAllLobbies())?.data,
+    queryFn: async () => (await serverApiClient.getAllLobbies())?.data,
     refetchInterval: 10000,
   });
 

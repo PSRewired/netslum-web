@@ -17,15 +17,17 @@ import CharacterCard from '../Cards/CharacterCard.jsx';
 import LoadingSpinner from '../Util/LoadingSpinner.jsx';
 import { MdPeople } from 'react-icons/md';
 import StatsHistoryTable from './StatsHistoryTable.jsx';
+import { useServerApi } from '../../hooks/useServerApi.js';
 
 const ViewCharacter = ({ characterId }) => {
+  const serverApiClient = useServerApi();
   const {
     data: characterInfo,
     isFetching,
     isError,
   } = useQuery({
     queryKey: ['character-info', characterId],
-    queryFn: async () => (await getCharacter(characterId))?.data,
+    queryFn: async () => (await serverApiClient.getCharacter(characterId))?.data,
     retry: false,
   });
 
@@ -35,7 +37,7 @@ const ViewCharacter = ({ characterId }) => {
     isError: historyHasError,
   } = useQuery({
     queryKey: ['character-history', characterId],
-    queryFn: async () => (await getCharacterStatsHistory(characterId))?.data,
+    queryFn: async () => (await serverApiClient.getCharacterStatsHistory(characterId))?.data,
     retry: false,
   });
 

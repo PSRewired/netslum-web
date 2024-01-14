@@ -1,4 +1,4 @@
-import { getAccountCharacters } from '../../../../clients/ServerApiClient.js';
+import { SsrServerApiClient } from '../../../../clients/ServerApiClient.js';
 import PlayerList from '../../../../components/Players/PlayerList.jsx';
 import { Container, Row } from 'react-bootstrap';
 
@@ -6,7 +6,7 @@ const AccountPlayersPage = async ({ params: { accountId } }) => {
   let players = [];
 
   try {
-    players = (await getAccountCharacters(accountId))?.data;
+    players = (await SsrServerApiClient.getAccountCharacters(accountId))?.data;
   } catch (error) {
     console.error(error);
   }

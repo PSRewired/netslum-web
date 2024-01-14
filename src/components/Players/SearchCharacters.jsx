@@ -12,17 +12,12 @@ import {
   Table,
 } from 'react-bootstrap';
 import { MdClear, MdSearch } from 'react-icons/md';
-import {
-  getAllPlayers,
-  getServerStats,
-} from '../../clients/ServerApiClient.js';
 import LoadingSpinner from '../Util/LoadingSpinner.jsx';
-import { Link } from '../Router/Link.jsx';
 import { Formik } from 'formik';
 import { useState } from 'react';
-import { CharacterClassNames } from '../../constants/Character.js';
 import { useQuery } from '@tanstack/react-query';
 import PlayerList from './PlayerList.jsx';
+import { useServerApi } from '../../hooks/useServerApi.js';
 
 const StatsPanel = ({ name, value }) => (
   <Col xs={12} md={4}>
@@ -41,15 +36,17 @@ const SearchCharacters = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
 
+  const serverApiClient = useServerApi();
+
   const { data: serverStats = {}, isFetching: isLoadingStats } = useQuery({
     queryKey: ['server-stats'],
-    queryFn: async () => (await getServerStats())?.data,
+    queryFn: async () => (await serverApiClient.getServerStats())?.data,
   });
 
   const { data: allPlayers = [] } = useQuery({
     queryKey: ['all-players', currentPage, searchValue],
     queryFn: async () =>
-      (await getAllPlayers(currentPage, 10, searchValue))?.data,
+      (await serverApiClient.getAllPlayers(currentPage, 10, searchValue))?.data,
   });
 
   const onSearchChanged = ({ name }) => {
