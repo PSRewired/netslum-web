@@ -16,7 +16,7 @@ COPY . .
 COPY --from=dependencies /deps/node_modules ./node_modules
 
 RUN pnpm exec next telemetry status disable
-RUN pnpm run build --experimental-turbo
+RUN pnpm run build 
 
 RUN ls -la
 
@@ -26,11 +26,9 @@ ENV NEXT_TELEMETRY_DISABLED 1
 WORKDIR /srv
 ENV NODE_ENV production
 
-COPY --from=builder /srv/next.config.js ./
-COPY --from=builder /srv/public ./public
-COPY --from=builder /srv/build ./build
-COPY --from=builder /srv/node_modules ./node_modules
-COPY --from=builder /srv/package.json ./package.json
+COPY --from=builder /srv/.next/standalone/ .
+COPY --from=builder /srv/public/ ./public/
+COPY --from=builder /srv/.next/static ./public/_next/static/
 
 EXPOSE 3000
-CMD ["pnpm", "run", "start:prod"]
+CMD ["node",  "server.js"]
