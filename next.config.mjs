@@ -1,3 +1,5 @@
+import withNextIntl from 'next-intl/plugin';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
@@ -5,4 +7,4 @@ const nextConfig = {
     swcMinify: true,
 };
 
-export default nextConfig;
+export default withNextIntl()(nextConfig);

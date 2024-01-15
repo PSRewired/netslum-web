@@ -1,9 +1,9 @@
 'use server';
 
-import PlayerList from '../../../../components/Players/PlayerList.jsx';
+import PlayerList from '../../../../../components/Players/PlayerList.jsx';
 import { Container, Row } from 'react-bootstrap';
-import { getServerHost } from '../../../../util/HostUtils.js';
-import { ServerApiClient } from '../../../../clients/ServerApiClient.js';
+import { getServerHost } from '../../../../../util/HostUtils.js';
+import { ServerApiClient } from '../../../../../clients/ServerApiClient.js';
 
 async function getServerSideProps(accountId) {
   const host = getServerHost();

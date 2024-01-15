@@ -1,5 +1,5 @@
-@import '../../app/styles/main.scss';
-@import '../../app/styles/_variables.scss';
+@import '../../app/[locale]/styles/main.scss';
+@import '../../app/[locale]/styles/_variables.scss';
 
 .navbar {
   background: $primary-gradient;

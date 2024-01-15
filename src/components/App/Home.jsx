@@ -1,11 +1,14 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { useTranslations } from 'next-intl';
 
 const Home = () => {
+  const t = useTranslations('Home');
+
   return (
     <Container>
       <Row className="p-5">
         <Col xl={7}>
-          <h1>.hack//Fragment Netslum Server</h1>
+          <h1>{t('title')}</h1>
           <small className="subtitle">
             &ldquo;Against the abominable Wave, together they fight.&rdquo;
           </small>

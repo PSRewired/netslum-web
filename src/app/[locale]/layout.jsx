@@ -1,6 +1,6 @@
-import Footer from '../components/App/Footer.jsx';
-import Titlebar from '../components/App/Titlebar.jsx';
-import Providers from './providers.jsx';
+import Footer from '../../components/App/Footer.jsx';
+import Titlebar from '../../components/App/Titlebar.jsx';
+import Providers from '../providers.jsx';
 
 import './styles/main.scss';
 
@@ -15,9 +15,9 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ params: { locale }, children }) {
   return (
-    <html lang="en" data-bs-theme="dark">
+    <html lang={locale} data-bs-theme="dark">
       <head>
         <link
           rel="apple-touch-icon"
