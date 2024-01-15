@@ -16,6 +16,7 @@ export async function generateMetadata({ params }) {
       title: `Character Record: ${character.characterName}`,
       openGraph: {
         images: `/images/portraits/${character?.avatarId?.toLowerCase()}.png`,
+        description: character?.greeting ?? '',
       },
     };
   } catch (error) {
