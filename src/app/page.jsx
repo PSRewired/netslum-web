@@ -4,8 +4,6 @@ export const metadata = {
   title: 'Home // Netslum // .hack Private Servers',
 };
 
-const HomePage = () => {
+export default async function HomePage() {
   return <Home />;
-};
-
-export default HomePage;
+}

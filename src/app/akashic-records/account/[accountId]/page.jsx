@@ -1,15 +1,20 @@
+'use server';
+
 import PlayerList from '../../../../components/Players/PlayerList.jsx';
 import { Container, Row } from 'react-bootstrap';
-import { SsrServerApiClient } from '../../../../util/SsrServerApiClient.js';
+import { getServerHost } from '../../../../util/HostUtils.js';
+import { ServerApiClient } from '../../../../clients/ServerApiClient.js';
 
-const AccountPlayersPage = async ({ params: { accountId } }) => {
-  let players = [];
+async function getServerSideProps(accountId) {
+  const host = getServerHost();
+  const apiClient = new ServerApiClient(host);
+  return {
+    players: await apiClient.getAccountCharacters(accountId)?.data,
+  };
+}
 
-  try {
-    players = (await SsrServerApiClient.getAccountCharacters(accountId))?.data;
-  } catch (error) {
-    console.error(error);
-  }
+export default async function AccountPlayersPage({ params: { accountId } }) {
+  const { players } = await getServerSideProps(accountId);
 
   return (
     <Container>
@@ -19,6 +24,4 @@ const AccountPlayersPage = async ({ params: { accountId } }) => {
       </Row>
     </Container>
   );
-};
-
-export default AccountPlayersPage;
+}

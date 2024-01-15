@@ -1,9 +1,14 @@
+'use server';
+
 import ViewCharacter from '../../../components/Players/ViewCharacter.jsx';
-import { SsrServerApiClient } from '../../../util/SsrServerApiClient.js';
+import { getServerHost } from '../../../util/HostUtils.js';
+import { ServerApiClient } from '../../../clients/ServerApiClient.js';
 
 export async function generateMetadata({ params }) {
   try {
-    const { data: character } = await SsrServerApiClient.getCharacter(
+    const host = getServerHost();
+    const apiClient = new ServerApiClient(host);
+    const { data: character } = await apiClient.getCharacter(
       params.characterId,
     );
 
@@ -22,8 +27,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const CharacterRecord = ({ params: { characterId } }) => {
+export default async function CharacterRecord({ params: { characterId } }) {
   return <ViewCharacter characterId={characterId} />;
-};
-
-export default CharacterRecord;
+}

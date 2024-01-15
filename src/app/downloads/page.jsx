@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Downloads',
 };
 
-const DownloadsPage = () => {
+export default async function DownloadsPage() {
   return (
     <Container>
       <Row>
@@ -191,6 +191,4 @@ const DownloadsPage = () => {
       </Row>
     </Container>
   );
-};
-
-export default DownloadsPage;
+}

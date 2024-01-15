@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Server Status',
 };
 
-const StatusPage = () => {
+export default async function StatusPage() {
   return (
     <Container>
       <Row className="mb-3">
@@ -17,6 +17,4 @@ const StatusPage = () => {
       </Row>
     </Container>
   );
-};
-
-export default StatusPage;
+}
