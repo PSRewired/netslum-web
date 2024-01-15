@@ -9,7 +9,7 @@ export const metadata = {
     template: '%s // Netslum // .hack Private Servers',
     default: '',
   },
-  metadataBase: new URL('https://netslum.psrewired.com'),
+  metadataBase: new URL('https://fragment.psrewired.com'),
   openGraph: {
     images: '/images/logo.svg',
   },
