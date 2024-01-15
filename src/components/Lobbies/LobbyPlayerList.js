@@ -35,11 +35,9 @@ const LobbyPlayerList = () => {
       <Row>
         {lobbies.map((s, i) => (
           <Fragment key={i}>
-            <Col xs={12}>
-              {s.name}
-            </Col>
+            <Col xs={12}>{s.name}</Col>
             {s.players.map((p, i) => (
-              <Col xs={12}>
+              <Col key={`p-${i}`} xs={12}>
                 {p.name}
               </Col>
             ))}
