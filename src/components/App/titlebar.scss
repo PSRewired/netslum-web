@@ -19,7 +19,11 @@
 }
 
 .nav-link {
-  color: $light;
+  color: $white !important;
+
+  &:hover {
+    color: $light !important;
+  }
 }
 
 .navbar-collapse {

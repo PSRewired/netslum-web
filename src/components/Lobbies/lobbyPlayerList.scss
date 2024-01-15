@@ -1,5 +1,8 @@
+@import "../../app/styles/bootstrap";
+
 .fragment-list {
   min-height: 52px;
+  color: $white;
   background: url(/images/hud/text-bg.png);
   padding: 8px;
   border: 1px solid #001727;

@@ -6,8 +6,8 @@ import { Link } from '../Router/Link.jsx';
 import Image from 'next/image';
 
 const Titlebar = () => (
-  <Navbar>
-    <Container>
+  <Navbar expand="md">
+    <Container fluid>
       <Navbar.Brand href="/" style={{ display: 'flex' }} as={Link}>
         <Image
           priority

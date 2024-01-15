@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import './lobbyPlayerList.scss';
 import LoadingSpinner from '../Util/LoadingSpinner.jsx';
 import { useServerApi } from '../../hooks/useServerApi.js';
+import { Fragment } from 'react';
 
 const LobbyPlayerList = () => {
   const serverApiClient = useServerApi();
@@ -33,16 +34,16 @@ const LobbyPlayerList = () => {
       )}
       <Row>
         {lobbies.map((s, i) => (
-          <>
-            <Col key={i} xs={12}>
+          <Fragment key={i}>
+            <Col xs={12}>
               {s.name}
             </Col>
             {s.players.map((p, i) => (
-              <Col key={i} xs={12}>
+              <Col xs={12}>
                 {p.name}
               </Col>
             ))}
-          </>
+          </Fragment>
         ))}
       </Row>
     </Container>

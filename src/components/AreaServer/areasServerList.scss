@@ -1,3 +1,5 @@
+@import "../../app/styles/bootstrap";
+
 .fragment-list {
   min-height: 52px;
   background: url(/images/hud/text-bg.png);
@@ -9,6 +11,7 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   margin-top: 16px;
+  color: $white;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
