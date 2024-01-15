@@ -5,6 +5,8 @@ import { headers } from 'next/headers';
  * @returns {string}
  */
 export const getServerHost = () => {
+  const host = headers().get('host');
+
   if (!!process.env.NEXT_PUBLIC_API_URI) {
     return process.env.NEXT_PUBLIC_API_URI;
   }
