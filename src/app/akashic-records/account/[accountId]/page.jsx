@@ -8,8 +8,11 @@ import { ServerApiClient } from '../../../../clients/ServerApiClient.js';
 async function getServerSideProps(accountId) {
   const host = getServerHost();
   const apiClient = new ServerApiClient(host);
+
+  const players = (await apiClient.getAccountCharacters(accountId))?.data;
+
   return {
-    players: await apiClient.getAccountCharacters(accountId)?.data,
+    players,
   };
 }
 

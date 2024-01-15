@@ -50,7 +50,6 @@ const SearchCharacters = () => {
   });
 
   const onSearchChanged = ({ name }) => {
-    console.log('search changed');
     setSearchValue(name);
     setCurrentPage(1);
   };
