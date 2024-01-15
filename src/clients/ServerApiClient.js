@@ -1,7 +1,4 @@
 import axios from 'axios';
-import { getServerHost } from '../util/HostUtils.js';
-
-export const SsrServerApiClient = new ServerApiClient(getServerHost());
 
 export class ServerApiClient {
   #client;
@@ -14,20 +11,16 @@ export class ServerApiClient {
 
   getServerStats = () => this.#client.get(`/api/stats`);
 
-  getAllPlayers = (
-    page = 1,
-    pageSize = 10,
-    characterName = undefined
-  ) =>
+  getAllPlayers = (page = 1, pageSize = 10, characterName = undefined) =>
     this.#client.get(`/api/players`, {
       params: {
         page,
         pageSize,
-        characterName
-      }
+        characterName,
+      },
     });
 
-   getCharacter = (characterId) =>
+  getCharacter = (characterId) =>
     this.#client.get(`/api/players/${characterId}`);
 
   getCharacterStatsHistory = (characterId) =>
@@ -40,4 +33,3 @@ export class ServerApiClient {
 
   getAllLobbies = () => this.#client.get(`/api/lobbies`);
 }
-

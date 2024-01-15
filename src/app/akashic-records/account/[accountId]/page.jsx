@@ -1,6 +1,6 @@
-import { SsrServerApiClient } from '../../../../clients/ServerApiClient.js';
 import PlayerList from '../../../../components/Players/PlayerList.jsx';
 import { Container, Row } from 'react-bootstrap';
+import { SsrServerApiClient } from '../../../../util/SsrServerApiClient.js';
 
 const AccountPlayersPage = async ({ params: { accountId } }) => {
   let players = [];

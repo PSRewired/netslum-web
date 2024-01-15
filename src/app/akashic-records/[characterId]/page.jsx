@@ -1,9 +1,11 @@
 import ViewCharacter from '../../../components/Players/ViewCharacter.jsx';
-import { ServerApiClient, SsrServerApiClient } from '../../../clients/ServerApiClient.js';
+import { SsrServerApiClient } from '../../../util/SsrServerApiClient.js';
 
 export async function generateMetadata({ params }) {
   try {
-    const { data: character } = await SsrServerApiClient.getCharacter(params.characterId);
+    const { data: character } = await SsrServerApiClient.getCharacter(
+      params.characterId,
+    );
 
     return {
       title: `Character Record: ${character.characterName}`,
