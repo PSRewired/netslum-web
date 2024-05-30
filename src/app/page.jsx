@@ -1,4 +1,4 @@
-import Home from '../../components/App/Home.jsx';
+import Home from '@/components/App/Home.jsx';
 
 export const metadata = {
   title: 'Home // Netslum // .hack Private Servers',

@@ -1,7 +1,7 @@
-@import '../../app/[locale]/styles/bootstrap.scss';
+@import '../../styles/bootstrap.scss';
 
 .character-container {
-  width: 370px;
+  width: 370px !important;
   margin: 0;
 }
 .stats-container {
@@ -27,7 +27,9 @@
 .character-name {
   position: absolute;
   top: 6%;
-  left: 38%;
+  left: 32%;
+  width: 110px;
+  text-align: center;
   font-size: 9pt;
 }
 
@@ -39,7 +41,7 @@
   position: absolute;
   width: 88px;
   top: 43%;
-  left: 50%;
+  left: 42%;
   font-size: 9pt;
   text-align: center;
   color: $yellow;
@@ -51,7 +53,7 @@
   width: 66px;
   text-align: center;
   top: 78%;
-  left: 56%;
+  left: 48%;
   font-size: 8pt;
   color: $yellow;
   font-weight: bold;

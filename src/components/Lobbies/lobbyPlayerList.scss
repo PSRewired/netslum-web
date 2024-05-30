@@ -1,4 +1,4 @@
-@import "../../app/[locale]/styles/bootstrap";
+@import '../../styles/bootstrap';
 
 .fragment-list {
   min-height: 52px;
@@ -7,10 +7,10 @@
   padding: 8px;
   border: 1px solid #001727;
   font-family: Hack, monospace;
-  font-size : clamp(10px, 2vw, 14px);
+  font-size: clamp(10px, 2vw, 14px);
   overflow: inherit;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   margin-top: 16px;
 }
 

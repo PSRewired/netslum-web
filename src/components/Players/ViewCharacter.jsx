@@ -1,10 +1,6 @@
 'use client';
 
 import {
-  getCharacter,
-  getCharacterStatsHistory,
-} from '../../clients/ServerApiClient.js';
-import {
   Button,
   Col,
   Container,
@@ -13,11 +9,11 @@ import {
   Tooltip,
 } from 'react-bootstrap';
 import { useQuery } from '@tanstack/react-query';
-import CharacterCard from '../Cards/CharacterCard.jsx';
-import LoadingSpinner from '../Util/LoadingSpinner.jsx';
+import CharacterCard from '@/components/Cards/CharacterCard.jsx';
+import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
 import { MdPeople } from 'react-icons/md';
 import StatsHistoryTable from './StatsHistoryTable.jsx';
-import { useServerApi } from '../../hooks/useServerApi.js';
+import { useServerApi } from '@/hooks/useServerApi.js';
 
 const ViewCharacter = ({ characterId }) => {
   const serverApiClient = useServerApi();
@@ -27,17 +23,15 @@ const ViewCharacter = ({ characterId }) => {
     isError,
   } = useQuery({
     queryKey: ['character-info', characterId],
-    queryFn: async () => (await serverApiClient.getCharacter(characterId))?.data,
+    queryFn: async () =>
+      (await serverApiClient.getCharacter(characterId))?.data,
     retry: false,
   });
 
-  const {
-    data: characterHistory,
-    isFetching: isFetchingHistory,
-    isError: historyHasError,
-  } = useQuery({
+  const { data: characterHistory } = useQuery({
     queryKey: ['character-history', characterId],
-    queryFn: async () => (await serverApiClient.getCharacterStatsHistory(characterId))?.data,
+    queryFn: async () =>
+      (await serverApiClient.getCharacterStatsHistory(characterId))?.data,
     retry: false,
   });
 
@@ -81,7 +75,7 @@ const ViewCharacter = ({ characterId }) => {
   return (
     <Container>
       <Row className="justify-content-between">
-        <Col>
+        <Col lg={4}>
           <CharacterCard character={characterInfo} />
         </Col>
         <Col sm={1}>

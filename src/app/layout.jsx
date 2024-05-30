@@ -1,8 +1,10 @@
-import Footer from '../../components/App/Footer.jsx';
-import Titlebar from '../../components/App/Titlebar.jsx';
-import Providers from '../providers.jsx';
+import Footer from '@/components/App/Footer.jsx';
+import Titlebar from '@/components/App/Titlebar.jsx';
+import Providers from './providers';
 
-import './styles/main.scss';
+import '@/styles/main.scss';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 export const metadata = {
   title: {
@@ -15,7 +17,13 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ params: { locale }, children }) {
+export default async function RootLayout({ children }) {
+  const locale = await getLocale();
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
     <html lang={locale} data-bs-theme="dark">
       <head>
@@ -44,11 +52,13 @@ export default function RootLayout({ params: { locale }, children }) {
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body>
-        <Providers>
-          <Titlebar />
-          <main>{children}</main>
-          <Footer />
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <Providers>
+            <Titlebar />
+            <main>{children}</main>
+            <Footer />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

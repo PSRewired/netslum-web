@@ -5,16 +5,15 @@ import { useQuery } from '@tanstack/react-query';
 
 import './areasServerList.scss';
 import { DateTime } from 'luxon';
-import { AreaServerStatusDescription } from '../../constants/AreaServerStatus.js';
-import LoadingSpinner from '../Util/LoadingSpinner.jsx';
-import { useServerApi } from '../../hooks/useServerApi.js';
+import { AreaServerStatusDescription } from '@/constants/AreaServerStatus.js';
+import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
+import { useServerApi } from '@/hooks/useServerApi.js';
 
 function getStateDescription(state) {
   return AreaServerStatusDescription[state] ?? 'Unknown';
 }
 
 const AreaServerList = () => {
-
   const serverApiClient = useServerApi();
   const { data: areaServers = [], isFetching } = useQuery({
     queryKey: ['area-server-list'],

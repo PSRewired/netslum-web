@@ -1,4 +1,4 @@
-import { ServerApiClient } from '../clients/ServerApiClient.js';
+import { ServerApiClient } from '@/clients/ServerApiClient.js';
 
 function getUrlOverride() {
   if (!!process.env.NEXT_PUBLIC_API_URI) {

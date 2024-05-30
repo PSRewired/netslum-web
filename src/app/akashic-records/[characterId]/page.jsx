@@ -1,8 +1,8 @@
 'use server';
 
-import ViewCharacter from '../../../../components/Players/ViewCharacter.jsx';
-import { getServerHost } from '../../../../util/HostUtils.js';
-import { ServerApiClient } from '../../../../clients/ServerApiClient.js';
+import ViewCharacter from '@/components/Players/ViewCharacter.jsx';
+import { getServerHost } from '@/util/HostUtils.js';
+import { ServerApiClient } from '@/clients/ServerApiClient.js';
 
 export async function generateMetadata({ params }) {
   try {

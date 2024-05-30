@@ -2,7 +2,7 @@
 
 import './titlebar.scss';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from '../Router/Link.jsx';
+import { Link } from '@/components/Router/Link';
 import Image from 'next/image';
 
 const Titlebar = () => (

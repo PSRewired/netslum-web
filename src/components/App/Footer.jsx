@@ -12,8 +12,8 @@ const Footer = () => (
       <Row xs={12}>
         <Col xs={12} as="p" className="lead">
           Over the years the following people have made contributions to either
-          the software or important research that made Netslum&apos;s Lobby Server
-          possible:
+          the software or important research that made Netslum&apos;s Lobby
+          Server possible:
           <br />
           Coldbird, NCDyson, Mugi, 1UP, Bison, WarrantyVoider, Zackmon,
           formlesstree4, Alkalime, K3rber0s.

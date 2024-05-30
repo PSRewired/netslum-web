@@ -9,15 +9,14 @@ import {
   Form,
   InputGroup,
   Row,
-  Table,
 } from 'react-bootstrap';
 import { MdClear, MdSearch } from 'react-icons/md';
-import LoadingSpinner from '../Util/LoadingSpinner.jsx';
+import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
 import { Formik } from 'formik';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import PlayerList from './PlayerList.jsx';
-import { useServerApi } from '../../hooks/useServerApi.js';
+import { useServerApi } from '@/hooks/useServerApi.js';
 
 const StatsPanel = ({ name, value }) => (
   <Col xs={12} md={4}>

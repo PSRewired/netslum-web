@@ -5,12 +5,10 @@ import { ThemeProvider } from 'react-bootstrap';
 
 const queryClient = new QueryClient();
 
-const Providers = ({ children }) => {
+export default function Providers({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>{children}</ThemeProvider>
     </QueryClientProvider>
   );
-};
-
-export default Providers;
+}

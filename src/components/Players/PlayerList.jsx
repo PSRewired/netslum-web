@@ -1,8 +1,8 @@
 'use client';
 
 import { Table } from 'react-bootstrap';
-import { CharacterClassNames } from '../../constants/Character.js';
-import Link from '../Router/Link.jsx';
+import { CharacterClassNames } from '@/constants/Character.js';
+import Link from '@/components/Router/Link.jsx';
 
 const PlayerList = ({ players = [] }) => {
   return (

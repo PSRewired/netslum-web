@@ -1,4 +1,4 @@
-import SearchCharacters from '../../../components/Players/SearchCharacters.jsx';
+import SearchCharacters from '@/components/Players/SearchCharacters.jsx';
 
 export const metadata = {
   title: 'Akashic Records',

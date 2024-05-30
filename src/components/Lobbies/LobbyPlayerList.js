@@ -4,8 +4,8 @@ import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useQuery } from '@tanstack/react-query';
 
 import './lobbyPlayerList.scss';
-import LoadingSpinner from '../Util/LoadingSpinner.jsx';
-import { useServerApi } from '../../hooks/useServerApi.js';
+import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
+import { useServerApi } from '@/hooks/useServerApi.js';
 import { Fragment } from 'react';
 
 const LobbyPlayerList = () => {

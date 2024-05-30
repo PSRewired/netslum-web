@@ -1,11 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Dev Server" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
-    <command value="run" />
-    <scripts>
-      <script value="start" />
-    </scripts>
-    <node-interpreter value="project" />
+    <command value="start" />
+    <node-interpreter value="$PROJECT_DIR$/../../../../Program Files/nodejs/node" />
+    <package-manager value="pnpm" />
     <envs />
     <method v="2" />
   </configuration>
