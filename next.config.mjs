@@ -9,6 +9,9 @@ const nextConfig = {
     output: 'standalone',
     reactStrictMode: true,
     swcMinify: true,
+    experimental: {
+        turbo: {},
+    },
     sassOptions: {
         includePaths: [path.join(__dirname, 'src', 'styles')],
     }
