@@ -56,31 +56,8 @@ export default async function DownloadsPage() {
               Once you have obtained them, place them into the bios folder.
             </Col>
             <Col as="dt" md={2}>
-              CLR_DEV9
-            </Col>
-            <Col as="dd" md={10}>
-              <a
-                href="https://github.com/TheLastRar/CLR-DEV9/releases"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Github
-              </a>
-              <br />
-              This is the DEV9 network plugin for PCSX2. It will allow your
-              emulator to connect to the internet.
-              <br />
-              Download the x86 version, and extract it to the Plugins folder,
-              then launch PCSX2, select &quot;Config&rarr;&quot;Plugins/BIOS
-              Selector&quot; and then select CLR_DEV9 from drop-down menu.
-              <br />
-              Click Apply, then configure this plugin by clicking
-              &quot;Configure&quot; next to the drop down box, clicking
-              &quot;Options&quot; next to &quot;Ethernet&quot; and then
-              selecting your network adapter from the drop down list.
-            </Col>
-            <Col as="dt" md={2}>
-              Updated Graphics Plugins
+              Updated Graphics Plugins <br />
+              <i>(Only required for PCSX2 1.6 and earlier)</i>
             </Col>
             <Col as="dd" md={10}>
               <a href="/GSdx32-NetFix.zip">Download</a>
@@ -100,7 +77,7 @@ export default async function DownloadsPage() {
               .hack//fragment Game Client
             </Col>
             <Col as="dd" md={10}>
-              For legal reasons I can not provide a link to the game client. You
+              For legal reasons we cannot provide a link to the game client. You
               will need to find a copy of the game yourself.
               <br />
               Once you&apos;ve obtained it either put the disc in the tray or
@@ -135,7 +112,7 @@ export default async function DownloadsPage() {
             </Col>
             <Col as="dd" md={10}>
               <a href="https://github.com/Zero1UP/dot-Hack-Fragment-Patcher/releases">
-                1up&apos;s Fragment Launcher
+                1UP&apos;s Fragment Launcher
               </a>
               <br />
               This tool written by 1UP will connect your game client to the
@@ -155,24 +132,6 @@ export default async function DownloadsPage() {
             <small className="text-muted">オプショナル</small>
           </h4>
           <Row as="dl">
-            <Col as="dt" md={2}>
-              CLR_USB
-            </Col>
-            <Col as="dd" md={10}>
-              <a href="https://forums.pcsx2.net/Thread-Another-USBQemu-plugin-this-time-in-VB-net-Keyboard-only">
-                Download
-              </a>
-              <br />
-              This is a USB plugin for PCSX2 by Air Gamer (who also made
-              CLR_DEV9). It will allow you to type with your keyboard in-game.
-              <br />
-              Download and extract the x86 version to the Plugins folder of your
-              PCSX2 install then select this plugin from the Plugins menu.
-              <br />
-              <strong>
-                Don&apos;t use this if you don&apos;t have a gamepad.
-              </strong>
-            </Col>
             <Col as="dt" md={2}>
               Area Server
             </Col>
