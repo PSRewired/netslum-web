@@ -1,6 +1,6 @@
 export const AreaServerStatus = {
-  Busy: 0,
-  Available: 3,
+  Busy: 2,
+  Available: 0,
 };
 
 export const AreaServerStatusDescription = {
