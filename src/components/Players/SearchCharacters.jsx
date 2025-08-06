@@ -62,7 +62,9 @@ const SearchCharacters = () => {
     <Container>
       <Row>
         <Col xs={12}>
-          <h1 className="underline-primary">Akashic Records</h1>
+          <h1 className="underline-primary">Akashic Records&nbsp;
+            <small className="text-muted">アカシックレコード</small>
+          </h1>
         </Col>
         <Col xs={12} as="p">
           The Akashic Records are a live database of player and character
@@ -92,6 +94,10 @@ const SearchCharacters = () => {
             <StatsPanel
               name="Total Save Files Recorded"
               value={serverStats?.registeredAccounts || '?'}
+            />
+            <StatsPanel
+              name="Active Guilds"
+              value={serverStats?.activeGuilds || '?'}
             />
           </>
         )}
