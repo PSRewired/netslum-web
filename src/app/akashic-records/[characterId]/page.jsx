@@ -8,8 +8,9 @@ export async function generateMetadata({ params }) {
   try {
     const host = getServerHost();
     const apiClient = new ServerApiClient(host);
+    const {characterId} = await params;
     const { data: character } = await apiClient.getCharacter(
-      params.characterId,
+      characterId,
     );
 
     return {

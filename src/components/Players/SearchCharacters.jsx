@@ -72,7 +72,7 @@ const SearchCharacters = () => {
         </Col>
         <Col xs={12} as="p">
           To use the records, simply type the name of the Character you wish to
-          search for into the search box above. From there, you can view any
+          search for into the search box below. From there, you can view any
           characters matching the search terms. Once on the page for a
           character, you can also view the names of any other characters that
           are owned by the same player.

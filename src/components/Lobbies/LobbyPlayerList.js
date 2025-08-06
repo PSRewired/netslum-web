@@ -6,7 +6,8 @@ import { useQuery } from '@tanstack/react-query';
 import './lobbyPlayerList.scss';
 import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
 import { useServerApi } from '@/hooks/useServerApi.js';
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
+import Link from '@/components/Router/Link.jsx';
 
 const LobbyPlayerList = () => {
   const serverApiClient = useServerApi();
@@ -15,6 +16,22 @@ const LobbyPlayerList = () => {
     queryFn: async () => (await serverApiClient.getAllLobbies())?.data,
     refetchInterval: 10000,
   });
+  
+  const flattenedPlayers = useMemo(() => {
+    const players = [];
+    
+    lobbies.forEach(lobby => {
+      lobby.players.forEach(player => {
+        players.push({
+          lobbyId: lobby.id,
+          lobbyName: lobby.name,
+          ...player, 
+        });
+      })
+    })
+    
+    return players;
+  }, [lobbies])
 
   return (
     <Container className="fragment-list position-relative d-flex">
@@ -32,18 +49,18 @@ const LobbyPlayerList = () => {
           <LoadingSpinner loading={true} />
         </Row>
       )}
-      <Row>
-        {lobbies.map((s, i) => (
-          <Fragment key={i}>
-            <Col xs={12}>{s.name}</Col>
-            {s.players.map((p, i) => (
-              <Col key={`p-${i}`} xs={12}>
-                {p.name}
-              </Col>
-            ))}
-          </Fragment>
+        {flattenedPlayers.map((p, i) => (
+          <Row key={i}
+               className="d-flex justify-content-between align-items-center w-100 flex-xs-column flex-nowrap"
+          >
+            <Col xs={4} lg={6}>
+            <Link href={`/akashic-records/${p.characterId}`}>{p.characterName}</Link>
+            </Col>
+            <Col xs={4} lg={2}>
+              {p.lobbyName}
+            </Col>
+          </Row>
         ))}
-      </Row>
     </Container>
   );
 };

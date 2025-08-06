@@ -1,20 +1,19 @@
 import path from 'path';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 
 const withNextIntl = createNextIntlPlugin();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));import createNextIntlPlugin from 'next-intl/plugin';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import createNextIntlPlugin from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
-    reactStrictMode: true,
-    swcMinify: true,
-    experimental: {
-        turbo: {},
-    },
-    sassOptions: {
-        includePaths: [path.join(__dirname, 'src', 'styles')],
-    }
+  output: 'standalone',
+  reactStrictMode: true,
+  turbopack: {},
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'src', 'styles')],
+    silenceDeprecations: ['legacy-js-api'],
+  }
 };
 
 export default withNextIntl(nextConfig);

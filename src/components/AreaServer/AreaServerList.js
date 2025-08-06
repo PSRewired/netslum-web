@@ -8,6 +8,7 @@ import { DateTime } from 'luxon';
 import { AreaServerStatusDescription } from '@/constants/AreaServerStatus.js';
 import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
 import { useServerApi } from '@/hooks/useServerApi.js';
+import Image from 'next/image';
 
 function getStateDescription(state) {
   return AreaServerStatusDescription[state] ?? 'Unknown';
@@ -22,9 +23,9 @@ const AreaServerList = () => {
   });
 
   return (
-    <Container className="fragment-list position-relative">
+    <Container className="fragment-list position-relative d-flex">
       <div className="position-relative header">
-        <img
+        <Image
           alt="logo"
           src="/images/hud/titlebar.png"
           width="186"
@@ -40,17 +41,17 @@ const AreaServerList = () => {
       {areaServers.map((s, i) => (
         <Row
           key={i}
-          className="d-flex justify-content-between align-items-center w-100"
+          className="d-flex justify-content-between align-items-center w-100 flex-xs-column flex-nowrap"
         >
-          <Col xs={4} lg={2} className="ellipse">
+          <Col xs={2} lg={2} className="ellipse">
             {s.name}
           </Col>
-          <Col xs={3} lg={1}>{`Level ${s.level}`}</Col>
-          <Col xs={1}>{getStateDescription(s.state)}</Col>
+          <Col xs={1} lg={1}>{`Level ${s.level}`}</Col>
+          <Col xs={2}>{getStateDescription(s.state)}</Col>
           <Col xs={2}>{`${s.currentPlayerCount} / 3`}</Col>
-          <Col lg="auto" className="text-end">
+          <Col xs={2} md="auto" className="text-end">
             {DateTime.fromISO(s.onlineSince).toLocaleString(
-              DateTime.DATETIME_MED_WITH_WEEKDAY,
+              DateTime.DATETIME_SHORT,
             )}
           </Col>
         </Row>
