@@ -23,7 +23,7 @@ const AreaServerList = () => {
   });
 
   return (
-    <Container className="fragment-list position-relative d-flex">
+    <Container className="fragment-list position-relative d-flex flex-column ">
       <div className="position-relative header">
         <Image
           alt="logo"
@@ -47,8 +47,8 @@ const AreaServerList = () => {
             {s.name}
           </Col>
           <Col xs={1} lg={1}>{`Level ${s.level}`}</Col>
-          <Col xs={2}>{getStateDescription(s.state)}</Col>
-          <Col xs={2}>{`${s.currentPlayerCount} / 3`}</Col>
+          <Col xs={2} lg={1}>{getStateDescription(s.state)}</Col>
+          <Col xs={2}>{`${s.currentPlayerCount} Players`}</Col>
           <Col xs={2} md="auto" className="text-end">
             {DateTime.fromISO(s.onlineSince).toLocaleString(
               DateTime.DATETIME_SHORT,
