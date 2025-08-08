@@ -10,6 +10,7 @@ const LoadingSpinner = ({ loading = true, size = 32 }) => {
 
   return (
     <Image
+      priority={true}
       className="loading-spinner"
       src="/images/logo.svg"
       width={size}

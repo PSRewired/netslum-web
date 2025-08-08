@@ -1,9 +1,10 @@
 'use client';
 
 import './titlebar.scss';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from '@/components/Router/Link';
 import Image from 'next/image';
+import DiscordLoginButton from '@/components/Auth/DiscordLoginButton.js';
 
 const Titlebar = () => (
   <Navbar expand="md">
@@ -28,6 +29,8 @@ const Titlebar = () => (
           <Link href="https://bbs.dothackers.org/">BBS</Link>
           <Link href="https://discord.gg/AMqgeFVzBw">Discord</Link>
         </Nav>
+        <div className="d-flex flex-grow-1"/>
+        <DiscordLoginButton />
       </Navbar.Collapse>
     </Container>
   </Navbar>

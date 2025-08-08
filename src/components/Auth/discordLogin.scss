@@ -1,0 +1,28 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/_mixins';
+
+.discord-button {
+  background-color: rgba(111, 66, 193, 0.73) !important;
+  border-color: rgba(111, 66, 193, 0.73) !important;
+  color: #f8f9fa !important;
+
+  &:hover {
+    border-color: #faf9fa !important;
+  }
+}
+
+.discord-icon {
+  margin-right: 6px;
+}
+
+.button-loading-spinner {
+  margin-right: 6px;
+}
+
+@include media-breakpoint-up(md) {
+  .dropdown-menu.show {
+    right: 0 !important;
+    left: auto !important;
+  }
+}

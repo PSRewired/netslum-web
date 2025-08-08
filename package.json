@@ -19,12 +19,14 @@
     "bootstrap": "^5.3.7",
     "deepmerge": "^4.3.1",
     "formik": "^2.4.6",
+    "jsonwebtoken": "^9.0.2",
     "luxon": "^3.7.1",
     "next": "^15.4.5",
+    "next-auth": "5.0.0-beta.29",
     "next-intl": "^4.3.4",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
     "react-bootstrap": "^3.0.0-beta.3",
+    "react-dom": "^19.1.1",
     "react-icons": "^5.5.0"
   },
   "devDependencies": {

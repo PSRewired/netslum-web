@@ -7,3 +7,10 @@ A NextJS rewrite of the .hack//Fragment website
 - Node 20
 - PNPM
 - [Fragment.Netslum](https://github.com/PSRewired/FragmentServer)
+
+# Contributing
+
+### Authentication
+- Please read the associated documentation on the authentication flow for this application [HERE](doc/auth.md)
+### Notes
+- Make sure that you are using an appropriate `.env.local` file when handling secrets during development.

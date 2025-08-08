@@ -13,6 +13,11 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src', 'styles')],
     silenceDeprecations: ['legacy-js-api'],
+  },
+  images: {
+    remotePatterns: [
+      new URL('https://cdn.discordapp.com/avatars/**')
+    ],
   }
 };
 
