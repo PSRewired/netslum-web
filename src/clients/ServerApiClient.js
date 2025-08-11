@@ -20,6 +20,8 @@ export class ServerApiClient {
       },
     });
 
+  getOnlinePlayers = () => this.#client.get(`/api/players/online`);
+
   getCharacter = (characterId) =>
     this.#client.get(`/api/players/${characterId}`);
 
@@ -32,4 +34,6 @@ export class ServerApiClient {
   getOnlineAreaServers = () => this.#client.get(`/api/areaservers`);
 
   getAllLobbies = () => this.#client.get(`/api/lobbies`);
+
+  getHealthCheck = () => this.#client.get(`/api/health`);
 }

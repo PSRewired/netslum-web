@@ -6,11 +6,21 @@ import { useQuery } from '@tanstack/react-query';
 import './lobbyPlayerList.scss';
 import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
 import { useServerApi } from '@/hooks/useServerApi.js';
-import { Fragment, useMemo } from 'react';
+import { useMemo } from 'react';
 import Link from '@/components/Router/Link.jsx';
+import Image from 'next/image';
+import CharacterCard from '@/components/Cards/CharacterCard.jsx';
+import FragmentTextBox from '@/components/Cards/FragmentTextBox.jsx';
 
 const LobbyPlayerList = () => {
   const serverApiClient = useServerApi();
+
+  const { data: onlinePlayers = [], isFetching: isFetchingPlayers } = useQuery({
+    queryKey: ['players-online'],
+    queryFn: async () => (await serverApiClient.getOnlinePlayers())?.data,
+    refetchInterval: 10000,
+  });
+
   const { data: lobbies = [], isFetching } = useQuery({
     queryKey: ['lobby-player-list'],
     queryFn: async () => (await serverApiClient.getAllLobbies())?.data,
@@ -36,33 +46,39 @@ const LobbyPlayerList = () => {
   return (
     <Container className="fragment-list position-relative d-flex">
       <div className="position-relative header">
-        <img
+        <Image
           alt="logo"
           src="/images/hud/titlebar.png"
           width="186"
           height="24"
         />
-        <p className="header-text">Players In Lobby</p>
+        <p className="header-text">Players Online</p>
       </div>
       {isFetching && (
         <Row className="absolute-center">
           <LoadingSpinner loading={true} />
         </Row>
       )}
-        {flattenedPlayers.map((p, i) => (
-          <Row key={i}
-               className="d-flex justify-content-between align-items-center w-100 flex-xs-column flex-nowrap"
-          >
-            <Col xs={4} lg={6}>
-            <Link href={`/akashic-records/${p.characterId}`}>{p.characterName}</Link>
-            </Col>
-            <Col xs={4} lg={2}>
-              {p.lobbyName}
-            </Col>
-          </Row>
-        ))}
+      {onlinePlayers?.filter(p => p.characterId > 0).map((p, i) =>
+        <OnlinePlayer key={i} player={p} playersInLobbies={flattenedPlayers}  />)}
     </Container>
   );
 };
+
+function OnlinePlayer({player, playersInLobbies = []}) {
+
+  const chatLobbyPlayer = playersInLobbies.find((p) => p.characterId === player.characterId);
+
+  return (
+    <Container className="d-flex flex-column" style={{maxWidth: '30%'}} as={Link}  href={`/akashic-records/${player.characterId}`}>
+      <CharacterCard character={player} showStats={false} showGreeting={false}/>
+      {chatLobbyPlayer && <FragmentTextBox>
+      {`Lobby: ${chatLobbyPlayer?.lobbyName}`}
+      </FragmentTextBox>}
+    </Container>
+
+  );
+
+}
 
 export default LobbyPlayerList;

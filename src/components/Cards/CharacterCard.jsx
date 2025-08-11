@@ -5,7 +5,7 @@ import { Badge, Col, Container, Row } from 'react-bootstrap';
 import './characterCard.scss';
 import FragmentTextBox from './FragmentTextBox.jsx';
 
-const CharacterCard = ({ character }) => {
+const CharacterCard = ({ character, showStats = true, showGreeting = true }) => {
   return (
     <Container className="character-container">
       <Row>
@@ -26,25 +26,29 @@ const CharacterCard = ({ character }) => {
           <span className="hp-amount hack-font">{character?.currentHp}</span>
           <span className="sp-amount hack-font">{character?.currentSp}</span>
         </Col>
-        <Col xs={5}>
-          <ul className="list-unstyled char-stats-block">
-            <li>
-              <Badge>GP: {character.currentGp}</Badge>
-            </li>
-            <li>
-              <Badge>Online Treasures: {character?.onlineTreasures}</Badge>
-            </li>
-            <li>
-              <Badge>Avg Field Level: {character?.averageFieldLevel}</Badge>
-            </li>
-          </ul>
-        </Col>
+        {showStats && (
+          <Col xs={5}>
+            <ul className="list-unstyled char-stats-block">
+              <li>
+                <Badge>GP: {character.currentGp}</Badge>
+              </li>
+              <li>
+                <Badge>Online Treasures: {character?.onlineTreasures}</Badge>
+              </li>
+              <li>
+                <Badge>Avg Field Level: {character?.averageFieldLevel}</Badge>
+              </li>
+            </ul>
+          </Col>
+        )}
       </Row>
-      <Row style={{ marginTop: 6 }}>
-        <FragmentTextBox>
-          <span>{character?.greeting}</span>
-        </FragmentTextBox>
-      </Row>
+      {showGreeting && (
+        <Row style={{ marginTop: 6 }}>
+          <FragmentTextBox>
+            <span>{character?.greeting}</span>
+          </FragmentTextBox>
+        </Row>
+      )}
     </Container>
   );
 };
