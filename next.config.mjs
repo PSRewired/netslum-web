@@ -8,11 +8,11 @@ import createNextIntlPlugin from 'next-intl/plugin';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  reactStrictMode: true,
   turbopack: {},
   sassOptions: {
     includePaths: [path.join(__dirname, 'src', 'styles')],
-    silenceDeprecations: ['legacy-js-api'],
+    silenceDeprecations: ['legacy-js-api', 'import'],
+    quietDeps: true,
   },
   images: {
     remotePatterns: [

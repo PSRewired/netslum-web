@@ -36,6 +36,8 @@ export default function DiscordLoginButton() {
       <Dropdown>
         <Dropdown.Toggle id="user-profile-actions" as={ProfileAvatar}/>
         <Dropdown.Menu flip={true} align='right'>
+          <Dropdown.Item disabled>{session?.data?.user?.name}</Dropdown.Item>
+          <Dropdown.Divider/>
           <Dropdown.Item onClick={() => signOut()}>Log Out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

@@ -21,7 +21,7 @@
     "formik": "^2.4.6",
     "jsonwebtoken": "^9.0.2",
     "luxon": "^3.7.1",
-    "next": "^15.4.5",
+    "next": "^15.4.7",
     "next-auth": "5.0.0-beta.29",
     "next-intl": "^4.3.4",
     "react": "^19.1.1",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "eslint": "^9.32.0",
-    "eslint-config-next": "^15.4.5",
+    "eslint-config-next": "^15.4.7",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",

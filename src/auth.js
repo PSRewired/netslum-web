@@ -39,9 +39,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     async jwt({ token, account }) {
-
       if (account) {
         token.expires_at = account.expires_at;
+
+        const discordProfile = await fetchDiscordAccountInfo(account.access_token);
+
+        if (discordProfile) {
+          token.username = discordProfile?.username;
+          token.locale = discordProfile?.locale;
+        }
 
         await setTokenCookie(account, token, DateTime.fromSeconds(account.expires_at).toJSDate());
       }
@@ -50,3 +56,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   }
 })
+
+async function fetchDiscordAccountInfo(accessToken) {
+  const resp = await fetch('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${accessToken}` }});
+
+  const data = await resp.json();
+
+  console.log('@me', data);
+
+  return data;
+}

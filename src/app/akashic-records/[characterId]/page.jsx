@@ -29,6 +29,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function CharacterRecord({ params: { characterId } }) {
+export default async function CharacterRecord({ params }) {
+  const {characterId} = await params;
   return <ViewCharacter characterId={characterId} />;
 }

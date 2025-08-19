@@ -6,6 +6,7 @@ export class ServerApiClient {
   constructor(baseURL = null) {
     this.#client = axios.create({
       baseURL,
+      withCredentials: true,
     });
   }
 
@@ -36,4 +37,8 @@ export class ServerApiClient {
   getAllLobbies = () => this.#client.get(`/api/lobbies`);
 
   getHealthCheck = () => this.#client.get(`/api/health`);
+
+  getNewsArticles = () => this.#client.get(`/api/news`);
+
+  getNewsArticle = (articleId) => this.#client.get(`/api/news/${articleId}`);
 }

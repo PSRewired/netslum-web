@@ -23,6 +23,7 @@ const Titlebar = () => (
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav>
+          <Link href="/news">News</Link>
           <Link href="/downloads">Downloads</Link>
           <Link href="/status">Status</Link>
           <Link href="/akashic-records">Akashic Records</Link>

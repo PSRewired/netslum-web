@@ -1,0 +1,39 @@
+@import '../../styles/bootstrap';
+
+.fragment-list {
+  min-height: 52px;
+  background: rgba(255, 255,255,0.4);
+  padding: 8px;
+  border: 1px solid #001727;
+  font-family: Hack, monospace;
+  font-size: clamp(10px, 2vw, 14px);
+  overflow: inherit;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  margin-top: 16px;
+  color: $white;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.fragment-list::-webkit-scrollbar {
+  display: none;
+}
+
+.header {
+  overflow: visible;
+}
+
+.header img {
+  position: absolute;
+  top: -32px;
+  left: -14px;
+}
+
+.header .header-text {
+  position: absolute;
+  top: -29px;
+  left: 82px;
+  text-align: center;
+  width: 150px;
+  font-weight: 100;
+}
