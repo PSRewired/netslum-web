@@ -11,6 +11,7 @@ import { useServerApi } from '@/hooks/useServerApi.js';
 import Image from 'next/image';
 import { MdRadioButtonChecked } from 'react-icons/md';
 import { RiQuestionLine } from 'react-icons/ri';
+import { ColorCodeMap } from '@/constants/TextColors.js';
 
 function getStateDescription(state) {
   return AreaServerStatusDescription[state] ?? 'Unknown';
@@ -25,6 +26,47 @@ function getStateStatus(state) {
     default:
       return <RiQuestionLine />
   }
+}
+
+function formatAreaServerName(name) {
+  const regex = /#([WRGBY])([^#]*?)(?=#|$)/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  let keyCounter = 0;
+
+  while ((match = regex.exec(name)) !== null) {
+    // Add any text before the color code
+    if (match.index > lastIndex) {
+      const beforeText = name.slice(lastIndex, match.index);
+      if (beforeText) {
+        parts.push(<span key={keyCounter++}>{beforeText}</span>);
+      }
+    }
+
+    // Add the colored text (preserve all spaces, only trim if empty)
+    const coloredText = match[2];
+    console.log(match);
+    if (coloredText) {
+      parts.push(
+        <span key={keyCounter++} style={{ color: ColorCodeMap[match[1]] }}>
+          {coloredText}
+        </span>
+      );
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  // Add any remaining text
+  if (lastIndex < name.length) {
+    const remainingText = name.slice(lastIndex);
+    if (remainingText) {
+      parts.push(<span key={keyCounter++}>{remainingText}</span>);
+    }
+  }
+
+  return parts;
 }
 
 const AreaServerList = () => {
@@ -58,7 +100,7 @@ const AreaServerList = () => {
           >
             <Col className="status-indicator">{getStateStatus(s.state)}</Col>
             <Col xs={5} className="ellipse overflow-x-hidden">
-              {s.name}
+              {formatAreaServerName(s.name)}
             </Col>
             <Col className="flex-grow-1"/>
             <Col xs={3}>{`Level ${s.level}`}</Col>

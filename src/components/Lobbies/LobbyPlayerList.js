@@ -52,7 +52,7 @@ const LobbyPlayerList = () => {
           width="186"
           height="24"
         />
-        <p className="header-text">Players Online</p>
+        <p className="header-text">Players In Lobby</p>
       </div>
       {isFetching && (
         <Row className="absolute-center">

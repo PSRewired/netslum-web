@@ -41,4 +41,6 @@ export class ServerApiClient {
   getNewsArticles = () => this.#client.get(`/api/news`);
 
   getNewsArticle = (articleId) => this.#client.get(`/api/news/${articleId}`);
+
+  getUserProfile = () => this.#client.get(`/api/users/profile`);
 }
