@@ -1,5 +1,5 @@
-import NextAuth from "next-auth"
-import Discord from "next-auth/providers/discord"
+import NextAuth from 'next-auth';
+import Discord from 'next-auth/providers/discord';
 import { cookies } from 'next/headers';
 import { DateTime } from 'luxon';
 import jwt from 'jsonwebtoken';
@@ -8,7 +8,7 @@ import { encrypt } from '@/util/Encryption.js';
 function createJwt(account) {
   const secret = process.env.JWT_SECRET;
 
-   return jwt.sign(account, secret, { expiresIn: `${account.expires_at}s` });
+  return jwt.sign(account, secret, { expiresIn: `${account.expires_at}s` });
 }
 
 /**
@@ -19,7 +19,7 @@ async function setTokenCookie(account, token) {
     ...token,
     at_hash: await encrypt(account.access_token),
   });
-  const expires =  DateTime.fromSeconds(account.expires_at).toJSDate();
+  const expires = DateTime.fromSeconds(account.expires_at).toJSDate();
 
   (await cookies()).set({
     name: 'netslum-token',
@@ -35,30 +35,38 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   events: {
     async signOut() {
       (await cookies()).delete('netslum-token');
-    }
+    },
   },
   callbacks: {
     async jwt({ token, account }) {
       if (account) {
         token.expires_at = account.expires_at;
 
-        const discordProfile = await fetchDiscordAccountInfo(account.access_token);
+        const discordProfile = await fetchDiscordAccountInfo(
+          account.access_token,
+        );
 
         if (discordProfile) {
           token.username = discordProfile?.username;
           token.locale = discordProfile?.locale;
         }
 
-        await setTokenCookie(account, token, DateTime.fromSeconds(account.expires_at).toJSDate());
+        await setTokenCookie(
+          account,
+          token,
+          DateTime.fromSeconds(account.expires_at).toJSDate(),
+        );
       }
 
       return token;
     },
-  }
-})
+  },
+});
 
 async function fetchDiscordAccountInfo(accessToken) {
-  const resp = await fetch('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${accessToken}` }});
+  const resp = await fetch('https://discordapp.com/api/users/@me', {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
 
   const data = await resp.json();
 

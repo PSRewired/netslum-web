@@ -30,7 +30,7 @@ const Titlebar = () => (
           <Link href="https://bbs.dothackers.org/">BBS</Link>
           <Link href="https://discord.gg/AMqgeFVzBw">Discord</Link>
         </Nav>
-        <div className="d-flex flex-grow-1"/>
+        <div className="d-flex flex-grow-1" />
         <DiscordLoginButton />
       </Navbar.Collapse>
     </Container>

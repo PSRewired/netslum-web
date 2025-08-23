@@ -26,22 +26,22 @@ const LobbyPlayerList = () => {
     queryFn: async () => (await serverApiClient.getAllLobbies())?.data,
     refetchInterval: 10000,
   });
-  
+
   const flattenedPlayers = useMemo(() => {
     const players = [];
-    
-    lobbies.forEach(lobby => {
-      lobby.players.forEach(player => {
+
+    lobbies.forEach((lobby) => {
+      lobby.players.forEach((player) => {
         players.push({
           lobbyId: lobby.id,
           lobbyName: lobby.name,
-          ...player, 
+          ...player,
         });
-      })
-    })
-    
+      });
+    });
+
     return players;
-  }, [lobbies])
+  }, [lobbies]);
 
   return (
     <Container className="fragment-list position-relative d-flex">
@@ -59,26 +59,43 @@ const LobbyPlayerList = () => {
           <LoadingSpinner loading={true} />
         </Row>
       )}
-      {onlinePlayers?.filter(p => p.characterId > 0).map((p, i) =>
-        <OnlinePlayer key={i} player={p} playersInLobbies={flattenedPlayers}  />)}
+      {onlinePlayers
+        ?.filter((p) => p.characterId > 0)
+        .map((p, i) => (
+          <OnlinePlayer
+            key={i}
+            player={p}
+            playersInLobbies={flattenedPlayers}
+          />
+        ))}
     </Container>
   );
 };
 
-function OnlinePlayer({player, playersInLobbies = []}) {
-
-  const chatLobbyPlayer = playersInLobbies.find((p) => p.characterId === player.characterId);
-
-  return (
-    <Container className="d-flex flex-column" style={{maxWidth: '30%'}} as={Link}  href={`/akashic-records/${player.characterId}`}>
-      <CharacterCard character={player} showStats={false} showGreeting={false}/>
-      {chatLobbyPlayer && <FragmentTextBox>
-      {`Lobby: ${chatLobbyPlayer?.lobbyName}`}
-      </FragmentTextBox>}
-    </Container>
-
+function OnlinePlayer({ player, playersInLobbies = [] }) {
+  const chatLobbyPlayer = playersInLobbies.find(
+    (p) => p.characterId === player.characterId,
   );
 
+  return (
+    <Container
+      className="d-flex flex-column"
+      style={{ maxWidth: '30%' }}
+      as={Link}
+      href={`/akashic-records/${player.characterId}`}
+    >
+      <CharacterCard
+        character={player}
+        showStats={false}
+        showGreeting={false}
+      />
+      {chatLobbyPlayer && (
+        <FragmentTextBox>
+          {`Lobby: ${chatLobbyPlayer?.lobbyName}`}
+        </FragmentTextBox>
+      )}
+    </Container>
+  );
 }
 
 export default LobbyPlayerList;

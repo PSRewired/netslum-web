@@ -1,0 +1,33 @@
+@import '../../styles/bootstrap.scss';
+
+.cp-drawer {
+  z-index: 0;
+  margin-top: 76px;
+  width: 230px !important;
+  height: 93vh;
+  background: rgba(46, 46, 46, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cp-list-item-dense {
+  height: 44px !important;
+}
+
+.cp-subsection {
+  border-bottom: 1px solid rgba(221, 221, 221, 0.19);
+}
+
+.cp-navlist .list-group-item {
+  display: flex;
+  align-items: center;
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1px solid rgba(221, 221, 221, 0.19);
+  height: 52px;
+
+  &.active {
+    background-color: $red;
+  }
+}

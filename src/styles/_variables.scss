@@ -4,8 +4,14 @@ $primary-gradient: linear-gradient(
   rgba(171, 0, 144, 0.9) 100%
 );
 
+$sidebar-gradient: linear-gradient(
+  to bottom,
+  rgba(248, 5, 5, 0.8) 0%,
+  rgba(171, 0, 144, 0.8) 100%
+);
+
 $primary-gradient-reverse: linear-gradient(
   to left,
   rgba(248, 5, 5, 0.9) 0%,
-  rgba(171, 0, 144, 0.9) 100%
+  rgba(171, 0, 144, 1) 100%
 );

@@ -11,11 +11,11 @@ export default async function StatusPage() {
   return (
     <Container className="gap-3 d-flex flex-column">
       <Row className="mb-3">
-      <h1 className="underlined underline-primary">
-        Server Status&nbsp;
-        <small className="text-muted me-3">サーバ</small>
-        <HealthCheck />
-      </h1>
+        <h1 className="underlined underline-primary">
+          Server Status&nbsp;
+          <small className="text-muted me-3">サーバ</small>
+          <HealthCheck />
+        </h1>
       </Row>
       <Row className="mb-3">
         <AreaServerList />

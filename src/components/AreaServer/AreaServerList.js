@@ -5,7 +5,10 @@ import { useQuery } from '@tanstack/react-query';
 
 import './areasServerList.scss';
 import { DateTime } from 'luxon';
-import { AreaServerStatus, AreaServerStatusDescription } from '@/constants/AreaServerStatus.js';
+import {
+  AreaServerStatus,
+  AreaServerStatusDescription,
+} from '@/constants/AreaServerStatus.js';
 import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
 import { useServerApi } from '@/hooks/useServerApi.js';
 import Image from 'next/image';
@@ -20,11 +23,11 @@ function getStateDescription(state) {
 function getStateStatus(state) {
   switch (state) {
     case AreaServerStatus.Available:
-      return <MdRadioButtonChecked color="green" />
+      return <MdRadioButtonChecked color="green" />;
     case AreaServerStatus.Busy:
-      return <MdRadioButtonChecked color="red" />
+      return <MdRadioButtonChecked color="red" />;
     default:
-      return <RiQuestionLine />
+      return <RiQuestionLine />;
   }
 }
 
@@ -51,7 +54,7 @@ function formatAreaServerName(name) {
       parts.push(
         <span key={keyCounter++} style={{ color: ColorCodeMap[match[1]] }}>
           {coloredText}
-        </span>
+        </span>,
       );
     }
 
@@ -74,40 +77,40 @@ const AreaServerList = () => {
   const { data: areaServers = [], isFetching } = useQuery({
     queryKey: ['area-server-list'],
     queryFn: async () => (await serverApiClient.getOnlineAreaServers())?.data,
-    refetchInterval: 10000
+    refetchInterval: 10000,
   });
 
   return (
-      <Container className="fragment-list position-relative d-flex flex-column ">
-        <div className="position-relative header">
-          <Image
-            alt="logo"
-            src="/images/hud/titlebar.png"
-            width="186"
-            height="24"
-          />
-          <p className="header-text">Servers Online</p>
-        </div>
-        {isFetching && (
-          <Row className="absolute-center">
-            <LoadingSpinner loading={true} />
-          </Row>
-        )}
-        {areaServers.map((s, i) => (
-          <Row
-            key={i}
-            className="d-flex justify-content-start w-100 flex-xs-column flex-nowrap area-server"
-          >
-            <Col className="status-indicator">{getStateStatus(s.state)}</Col>
-            <Col xs={5} className="ellipse overflow-x-hidden">
-              {formatAreaServerName(s.name)}
-            </Col>
-            <Col className="flex-grow-1"/>
-            <Col xs={3}>{`Level ${s.level}`}</Col>
-            <Col xs={3}>{`${s.currentPlayerCount} Players`}</Col>
-          </Row>
-        ))}
-      </Container>
+    <Container className="fragment-list position-relative d-flex flex-column ">
+      <div className="position-relative header">
+        <Image
+          alt="logo"
+          src="/images/hud/titlebar.png"
+          width="186"
+          height="24"
+        />
+        <p className="header-text">Servers Online</p>
+      </div>
+      {isFetching && (
+        <Row className="absolute-center">
+          <LoadingSpinner loading={true} />
+        </Row>
+      )}
+      {areaServers.map((s, i) => (
+        <Row
+          key={i}
+          className="d-flex justify-content-start w-100 flex-xs-column flex-nowrap area-server"
+        >
+          <Col className="status-indicator">{getStateStatus(s.state)}</Col>
+          <Col xs={5} className="ellipse overflow-x-hidden">
+            {formatAreaServerName(s.name)}
+          </Col>
+          <Col className="flex-grow-1" />
+          <Col xs={3}>{`Level ${s.level}`}</Col>
+          <Col xs={3}>{`${s.currentPlayerCount} Players`}</Col>
+        </Row>
+      ))}
+    </Container>
   );
 };
 

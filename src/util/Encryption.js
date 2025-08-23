@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 // Utility functions for Edge Runtime compatible encryption/decryption
 const encoder = new TextEncoder();
@@ -50,7 +50,7 @@ export async function encrypt(text) {
       keyBuffer,
       { name: 'AES-CBC' },
       false,
-      ['encrypt']
+      ['encrypt'],
     );
 
     // Encrypt the text
@@ -58,10 +58,10 @@ export async function encrypt(text) {
     const encryptedBuffer = await crypto.subtle.encrypt(
       {
         name: 'AES-CBC',
-        iv: ivBuffer
+        iv: ivBuffer,
       },
       key,
-      dataBuffer
+      dataBuffer,
     );
 
     // Convert to base64
@@ -83,7 +83,7 @@ export async function decrypt(encryptedText) {
       keyBuffer,
       { name: 'AES-CBC' },
       false,
-      ['decrypt']
+      ['decrypt'],
     );
 
     // Convert base64 to ArrayBuffer
@@ -93,10 +93,10 @@ export async function decrypt(encryptedText) {
     const decryptedBuffer = await crypto.subtle.decrypt(
       {
         name: 'AES-CBC',
-        iv: ivBuffer
+        iv: ivBuffer,
       },
       key,
-      encryptedBuffer
+      encryptedBuffer,
     );
 
     // Convert back to string

@@ -8,10 +8,8 @@ export async function generateMetadata({ params }) {
   try {
     const host = getServerHost();
     const apiClient = new ServerApiClient(host);
-    const {characterId} = await params;
-    const { data: character } = await apiClient.getCharacter(
-      characterId,
-    );
+    const { characterId } = await params;
+    const { data: character } = await apiClient.getCharacter(characterId);
 
     return {
       title: `Character Record: ${character.characterName}`,
@@ -30,6 +28,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function CharacterRecord({ params }) {
-  const {characterId} = await params;
+  const { characterId } = await params;
   return <ViewCharacter characterId={characterId} />;
 }

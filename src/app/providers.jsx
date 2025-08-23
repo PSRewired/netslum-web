@@ -12,9 +12,7 @@ export default function Providers({ children }) {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SessionProvider>
-          <AuthUserProfileProvider>
-            {children}
-          </AuthUserProfileProvider>
+          <AuthUserProfileProvider>{children}</AuthUserProfileProvider>
         </SessionProvider>
       </ThemeProvider>
     </QueryClientProvider>

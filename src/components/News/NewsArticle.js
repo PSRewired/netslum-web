@@ -2,8 +2,7 @@ import { Container } from 'react-bootstrap';
 import Image from 'next/image';
 import './newsArticle.scss';
 
-export function NewsArticle({article}) {
-
+export function NewsArticle({ article }) {
   return (
     <Container className="fragment-list position-relative d-flex flex-column ">
       <div className="position-relative header">

@@ -11,11 +11,11 @@ export default function HealthCheck() {
   const { isSuccess, isLoading } = useQuery({
     queryKey: ['health-check'],
     queryFn: async () => await serverApiClient.getHealthCheck(),
-    refetchInterval: 10000
+    refetchInterval: 10000,
   });
 
   if (isLoading) {
-    return <Spinner animation="grow" size="sm" className="mb-2" />
+    return <Spinner animation="grow" size="sm" className="mb-2" />;
   }
 
   return <FaCircle color={isSuccess ? 'green' : 'red'} size={18} />;

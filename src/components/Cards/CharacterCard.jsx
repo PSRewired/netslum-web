@@ -5,7 +5,11 @@ import { Badge, Col, Container, Row } from 'react-bootstrap';
 import './characterCard.scss';
 import FragmentTextBox from './FragmentTextBox.jsx';
 
-const CharacterCard = ({ character, showStats = true, showGreeting = true }) => {
+const CharacterCard = ({
+  character,
+  showStats = true,
+  showGreeting = true,
+}) => {
   return (
     <Container className="character-container">
       <Row>

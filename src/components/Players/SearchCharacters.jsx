@@ -62,7 +62,8 @@ const SearchCharacters = () => {
     <Container>
       <Row>
         <Col xs={12}>
-          <h1 className="underline-primary">Akashic Records&nbsp;
+          <h1 className="underline-primary">
+            Akashic Records&nbsp;
             <small className="text-muted">アカシックレコード</small>
           </h1>
         </Col>
