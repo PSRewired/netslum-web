@@ -5,13 +5,26 @@ import { useQuery } from '@tanstack/react-query';
 
 import './areasServerList.scss';
 import { DateTime } from 'luxon';
-import { AreaServerStatusDescription } from '@/constants/AreaServerStatus.js';
+import { AreaServerStatus, AreaServerStatusDescription } from '@/constants/AreaServerStatus.js';
 import LoadingSpinner from '@/components/Util/LoadingSpinner.jsx';
 import { useServerApi } from '@/hooks/useServerApi.js';
 import Image from 'next/image';
+import { MdRadioButtonChecked } from 'react-icons/md';
+import { RiQuestionLine } from 'react-icons/ri';
 
 function getStateDescription(state) {
   return AreaServerStatusDescription[state] ?? 'Unknown';
+}
+
+function getStateStatus(state) {
+  switch (state) {
+    case AreaServerStatus.Available:
+      return <MdRadioButtonChecked color="green" />
+    case AreaServerStatus.Busy:
+      return <MdRadioButtonChecked color="red" />
+    default:
+      return <RiQuestionLine />
+  }
 }
 
 const AreaServerList = () => {
@@ -41,19 +54,15 @@ const AreaServerList = () => {
         {areaServers.map((s, i) => (
           <Row
             key={i}
-            className="d-flex justify-content-between align-items-center w-100 flex-xs-column flex-nowrap"
+            className="d-flex justify-content-start w-100 flex-xs-column flex-nowrap area-server"
           >
-            <Col xs={2} lg={2} className="ellipse">
+            <Col className="status-indicator">{getStateStatus(s.state)}</Col>
+            <Col xs={5} className="ellipse overflow-x-hidden">
               {s.name}
             </Col>
-            <Col xs={1} lg={1}>{`Level ${s.level}`}</Col>
-            <Col xs={2} lg={1}>{getStateDescription(s.state)}</Col>
-            <Col xs={2}>{`${s.currentPlayerCount} Players`}</Col>
-            <Col xs={2} md="auto" className="text-end">
-              {DateTime.fromISO(s.onlineSince).toLocaleString(
-                DateTime.DATETIME_SHORT
-              )}
-            </Col>
+            <Col className="flex-grow-1"/>
+            <Col xs={3}>{`Level ${s.level}`}</Col>
+            <Col xs={3}>{`${s.currentPlayerCount} Players`}</Col>
           </Row>
         ))}
       </Container>
