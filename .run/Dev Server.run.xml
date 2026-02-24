@@ -2,7 +2,7 @@
   <configuration default="false" name="Dev Server" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="start" />
-    <node-interpreter value="$PROJECT_DIR$/../../../../Program Files/nodejs/node" />
+    <node-interpreter value="node" />
     <package-manager value="pnpm" />
     <envs />
     <method v="2" />
