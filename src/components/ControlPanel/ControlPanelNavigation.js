@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { MdExpandMore, MdNavigateNext } from 'react-icons/md';
 import { BsNewspaper } from 'react-icons/bs';
-import { FaGear } from 'react-icons/fa6';
+import { FaUserGroup } from 'react-icons/fa6';
 import { canAccessRoute } from '@/rbac.config';
 import { useAuthUserProfile } from '@/contexts/AuthUserProfileContext.js';
 import { SlGraph } from 'react-icons/sl';
@@ -28,6 +28,11 @@ const navItems = [
     title: 'MOTD',
     to: '/control-panel/motd',
     icon: <IoMdMegaphone />,
+  },
+  {
+    title: 'Users',
+    to: '/control-panel/users',
+    icon: <FaUserGroup />,
   },
 ];
 

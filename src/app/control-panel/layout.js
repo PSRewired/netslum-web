@@ -3,7 +3,7 @@ import ControlPanelNavigation from '@/components/ControlPanel/ControlPanelNaviga
 
 export default async function ControlPanelLayout({ children }) {
   return (
-    <Container>
+    <Container className="d-flex">
       <ControlPanelNavigation />
       {children}
     </Container>

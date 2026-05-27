@@ -39,8 +39,12 @@ export class ServerApiClient {
   getHealthCheck = () => this.#client.get(`/api/health`);
 
   getNewsArticles = () => this.#client.get(`/api/news`);
+  createNewsArticle = (values) => this.#client.post(`/api/news`, values);
 
   getNewsArticle = (articleId) => this.#client.get(`/api/news/${articleId}`);
 
   getUserProfile = () => this.#client.get(`/api/users/profile`);
+  getAuthRoles = () => this.#client.get(`/api/users/roles`);
+  getAuthUsers = (name = undefined) =>
+    this.#client.get(`/api/users`, { params: { name } });
 }
