@@ -5,9 +5,10 @@ import { FaDiscord } from 'react-icons/fa6';
 import './discordLogin.scss';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import NextImage from 'next/image';
-import { forwardRef, useCallback } from 'react';
+import { forwardRef, useCallback, useState } from 'react';
 import { useAuthUserProfile } from '@/contexts/AuthUserProfileContext.js';
 import NextLink from 'next/link';
+import ClaimAreaServerModal from '@/components/AreaServer/ClaimAreaServerModal.js';
 
 const ProfileAvatar = forwardRef(function Avatar({ children, onClick }, ref) {
   const session = useSession();
@@ -38,6 +39,8 @@ export default function DiscordLoginButton() {
 
   const userProfile = useAuthUserProfile();
 
+  const [showClaimModal, setShowClaimModal] = useState(false);
+
   const sessionLoading = session?.status === 'loading';
 
   const login = useCallback(async () => {
@@ -49,19 +52,28 @@ export default function DiscordLoginButton() {
     session?.data?.user !== undefined
   ) {
     return (
-      <Dropdown>
-        <Dropdown.Toggle id="user-profile-actions" as={ProfileAvatar} />
-        <Dropdown.Menu flip={true} align="right">
-          <Dropdown.Item disabled>{session?.data?.user?.name}</Dropdown.Item>
-          <Dropdown.Divider />
-          {userProfile?.permissions?.length > 0 && (
-            <Dropdown.Item as={NextLink} href="/control-panel">
-              Control Panel
+      <>
+        <Dropdown>
+          <Dropdown.Toggle id="user-profile-actions" as={ProfileAvatar} />
+          <Dropdown.Menu flip={true} align="right">
+            <Dropdown.Item disabled>{session?.data?.user?.name}</Dropdown.Item>
+            <Dropdown.Divider />
+            {userProfile?.permissions?.length > 0 && (
+              <Dropdown.Item as={NextLink} href="/control-panel">
+                Control Panel
+              </Dropdown.Item>
+            )}
+            <Dropdown.Item onClick={() => setShowClaimModal(true)}>
+              Claim Area Server
             </Dropdown.Item>
-          )}
-          <Dropdown.Item onClick={() => signOut()}>Log Out</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+            <Dropdown.Item onClick={() => signOut()}>Log Out</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <ClaimAreaServerModal
+          show={showClaimModal}
+          onHide={() => setShowClaimModal(false)}
+        />
+      </>
     );
   }
 

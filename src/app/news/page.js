@@ -1,6 +1,10 @@
 import { Container } from 'react-bootstrap';
 import NewsArticleList from '@/components/News/NewsArticleList.js';
 
+export const metadata = {
+  title: 'News',
+};
+
 export default async function NewsPage() {
   return (
     <Container className="gap-3 d-flex flex-column">

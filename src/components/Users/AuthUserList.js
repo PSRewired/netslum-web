@@ -19,6 +19,7 @@ import Link from '@/components/Router/Link.jsx';
 import { CharacterClassNames } from '@/constants/Character.js';
 import { DateTime } from 'luxon';
 import { find } from 'lodash/collection';
+import AssignRoleModal from './AssignRoleModal.js';
 
 export default function AuthUserList() {
   const apiClient = useServerApi();
@@ -131,6 +132,7 @@ function AuthUserTable({ users = [], roles = [] }) {
           </Col>
           <Col xs={3} className="px-2 text-nowrap">
             {getUserRole(p)}
+            <AssignRoleModal user={p} roles={roles} />
           </Col>
           <Col xs={3} className="pe-2 text-nowrap">
             {DateTime.fromISO(p.createdAt, { zone: 'utc' }).toLocaleString(

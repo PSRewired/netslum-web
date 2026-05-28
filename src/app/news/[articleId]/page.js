@@ -4,6 +4,10 @@ import { ServerApiClient } from '@/clients/ServerApiClient.js';
 import { getServerHost } from '@/util/HostUtils.js';
 import { NewsArticle } from '@/components/News/NewsArticle.js';
 
+export const metadata = {
+  title: 'View Article',
+};
+
 async function getArticle(articleId) {
   const host = await getServerHost();
   const client = new ServerApiClient(host);

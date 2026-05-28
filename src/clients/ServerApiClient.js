@@ -47,4 +47,11 @@ export class ServerApiClient {
   getAuthRoles = () => this.#client.get(`/api/users/roles`);
   getAuthUsers = (name = undefined) =>
     this.#client.get(`/api/users`, { params: { name } });
+  updateAuthUser = (userId, values) =>
+    this.#client.patch(`/api/users/${userId}`, values);
+
+  createAreaServerClaimCode = () =>
+    this.#client.post(`/api/areaservers/associations`);
+  getAreaServerClaimCodeStatus = (code) =>
+    this.#client.get(`/api/areaservers/associations`, { params: { code } });
 }
