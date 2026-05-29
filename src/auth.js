@@ -31,7 +31,9 @@ async function setTokenCookie(account, token) {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [Discord],
+  providers: [Discord({
+    checks: ['state']
+  })],
   events: {
     async signOut() {
       (await cookies()).delete('netslum-token');
