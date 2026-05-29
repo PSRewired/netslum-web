@@ -46,6 +46,7 @@
     "npm": "Please install and use pnpm in this project",
     "yarn": "Please install and use pnpm in this project"
   },
+  "packageManager": "pnpm@10.15.0",
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
