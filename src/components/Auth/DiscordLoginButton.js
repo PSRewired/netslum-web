@@ -66,6 +66,9 @@ export default function DiscordLoginButton() {
             <Dropdown.Item onClick={() => setShowClaimModal(true)}>
               Claim Area Server
             </Dropdown.Item>
+            <Dropdown.Item as={NextLink} href="/profile/area-servers">
+              My Area Servers
+            </Dropdown.Item>
             <Dropdown.Item onClick={() => signOut()}>Log Out</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

@@ -2,7 +2,7 @@
 
 import { Button, Modal, ProgressBar, Spinner } from 'react-bootstrap';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useServerApi } from '@/hooks/useServerApi.js';
 import { MdCheckCircle, MdError } from 'react-icons/md';
 
@@ -18,6 +18,7 @@ function formatRemaining(ms) {
 
 export default function ClaimAreaServerModal({ show, onHide }) {
   const apiClient = useServerApi();
+  const queryClient = useQueryClient();
 
   const [code, setCode] = useState(null);
   const [expiresAt, setExpiresAt] = useState(null);
@@ -30,7 +31,7 @@ export default function ClaimAreaServerModal({ show, onHide }) {
 
   const createClaimMutation = useMutation({
     mutationFn: async () => (await apiClient.createAreaServerClaimCode())?.data,
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       const newCode = data?.code ?? data?.claimCode ?? data;
       setCode(newCode);
       setExpiresAt(Date.now() + CLAIM_DURATION_MS);
@@ -105,10 +106,11 @@ export default function ClaimAreaServerModal({ show, onHide }) {
     triggeredRef.current = false;
   }, []);
 
-  const handleClose = useCallback(() => {
+  const handleClose = useCallback(async () => {
     resetState();
     onHide?.();
-  }, [onHide, resetState]);
+    await queryClient.invalidateQueries({queryKey: ['user-area-server-associations']})
+  }, [onHide, resetState, queryClient]);
 
   const handleRetry = useCallback(() => {
     resetState();

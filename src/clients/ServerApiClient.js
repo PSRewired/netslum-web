@@ -54,4 +54,6 @@ export class ServerApiClient {
     this.#client.post(`/api/areaservers/associations`);
   getAreaServerClaimCodeStatus = (code) =>
     this.#client.get(`/api/areaservers/associations`, { params: { code } });
+  getUserAreaServerAssociations = () => this.#client.get(`/api/users/areaservers`);
+  removeAreaServerAssociation = (associationId) => this.#client.delete(`/api/users/areaservers/${associationId}`, {associationId});
 }
