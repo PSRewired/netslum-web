@@ -32,7 +32,8 @@ async function setTokenCookie(account, token) {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Discord({
-    checks: ['state']
+    checks: ['state'],
+    debug: true,
   })],
   events: {
     async signOut() {
